@@ -7,8 +7,45 @@ const createInventoryDB = async (payload: TInventory) => {
 };
 
 const getInventoryDB = async (query: Record<string, unknown>) => {
-  let queryObj = { ...query };
-  const result = await InventoryModel.find();
+  console.log(query);
+
+  const query2 = {} as any;
+
+  if (Number(query?.price) > 0) {
+    query2["price"] = { $lt: Number(query?.price) };
+  }
+  if (query?.compatibilityAndBrand) {
+    const regex = new RegExp(query?.compatibilityAndBrand as string, "i");
+
+    query2["$or"] = [
+      { compatibility: { $regex: regex } },
+      { brand: { $regex: regex } },
+    ];
+  }
+
+  if (query?.category) {
+    query2["category"] = { $regex: new RegExp(query?.category as string, "i") }; // Case-sensitive regex
+  }
+
+  if (query?.interfaceValue) {
+    query2["interface"] = {
+      $regex: new RegExp(query?.interfaceValue as string, "i"),
+    }; // Case-sensitive regex
+  }
+  if (query?.condition) {
+    query2["condition"] = {
+      $regex: new RegExp(query?.condition as string, "i"),
+    }; // Case-sensitive regex
+  }
+  if (query?.capacity) {
+    query2["capacity"] = { $regex: new RegExp(query?.capacity as string, "i") }; // Case-sensitive regex
+  }
+  if (query?.color) {
+    query2["color"] = { $regex: new RegExp(query?.color as string, "i") }; // Case-sensitive regex
+  }
+
+  console.log(query2);
+  const result = await InventoryModel.find(query2);
   return result;
 };
 

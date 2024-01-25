@@ -3,7 +3,6 @@ import catchAsync from "../../app/config/utlis/catchAsync";
 import { InventoryServices } from "./inventory.services";
 
 const createInventory = catchAsync(async (req, res) => {
-  console.log("aise");
   const result = await InventoryServices.createInventoryDB(req?.body);
 
   res.send({
