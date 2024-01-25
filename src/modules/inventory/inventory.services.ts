@@ -24,7 +24,7 @@ const getInventoryDB = async (query: Record<string, unknown>) => {
   }
 
   if (query?.category) {
-    query2["category"] = { $regex: new RegExp(query?.category as string, "i") }; // Case-sensitive regex
+    query2["category"] = { $regex: new RegExp(query?.category as string, "i") };
   }
 
   if (query?.interfaceValue) {
