@@ -24,9 +24,27 @@ const getInventory = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getSingleInventory = catchAsync(async (req, res) => {
+  const query: string | undefined = req?.params?.id;
+  console.log(query, "aise");
+  const result = await InventoryServices.getSingleInventoryDB(query);
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Inventory get successfully",
+    data: result,
+  });
+});
 
 const updateInventory = catchAsync(async (req, res) => {
-  const result = await InventoryServices.updateInventoryDB();
+  const id = req?.params?.id;
+  const payload = req?.body;
+
+  delete payload?.id;
+
+  console.log(payload, id);
+  const result = await InventoryServices.updateInventoryDB(id, payload);
 
   res.send({
     statusCode: 201,
@@ -52,4 +70,5 @@ export const InventoryControllers = {
   getInventory,
   updateInventory,
   deleteInventory,
+  getSingleInventory,
 };

@@ -9,4 +9,5 @@ export interface TInventory {
   condition: string;
   capacity: string;
   color: string;
+  image: string;
 }

@@ -7,7 +7,7 @@ const createInventoryDB = async (payload: TInventory) => {
 };
 
 const getInventoryDB = async (query: Record<string, unknown>) => {
-  console.log(query);
+  console.log(query, "ki");
 
   const query2 = {} as any;
 
@@ -49,8 +49,15 @@ const getInventoryDB = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const updateInventoryDB = async () => {
-  return null;
+const getSingleInventoryDB = async (id: string | undefined) => {
+  console.log(id, "singleID");
+  const result = await InventoryModel.findOne({ _id: id });
+  return result;
+};
+const updateInventoryDB = async (id: string, payload: TInventory) => {
+  const result = await InventoryModel.updateOne({ _id: id }, payload);
+
+  return result;
 };
 
 const deleteInventoryDB = async () => {
@@ -62,4 +69,5 @@ export const InventoryServices = {
   getInventoryDB,
   updateInventoryDB,
   deleteInventoryDB,
+  getSingleInventoryDB,
 };

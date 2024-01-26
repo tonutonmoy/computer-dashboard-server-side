@@ -6,12 +6,13 @@ import { InventoryValidation } from "./inventory.validation";
 const router = express.Router();
 
 router.get("/", InventoryControllers.getInventory);
+router.get("/singleInventory/:id", InventoryControllers.getSingleInventory);
 router.post(
   "/create",
   validateRequest(InventoryValidation.createInventory),
   InventoryControllers.createInventory
 );
-router.post("/update", InventoryControllers.updateInventory);
+router.put("/update/:id", InventoryControllers.updateInventory);
 router.post("/delete", InventoryControllers.deleteInventory);
 
 export const InventoryRoutes = router;

@@ -13,6 +13,7 @@ const inventorySchema = new Schema<TInventory>({
   condition: { type: String, required: true },
   capacity: { type: String, required: true },
   color: { type: String, required: true },
+  image: { type: String, required: true },
 });
 
 const InventoryModel = model<TInventory>("Inventory", inventorySchema);

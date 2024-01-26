@@ -11,5 +11,6 @@ const createInventory = z.object({
   condition: z.string(),
   capacity: z.string(),
   color: z.string(),
+  image: z.string(),
 });
 export const InventoryValidation = { createInventory };
