@@ -13,6 +13,6 @@ router.post(
   InventoryControllers.createInventory
 );
 router.put("/update/:id", InventoryControllers.updateInventory);
-router.post("/delete", InventoryControllers.deleteInventory);
+router.delete("/delete", InventoryControllers.deleteInventory);
 
 export const InventoryRoutes = router;

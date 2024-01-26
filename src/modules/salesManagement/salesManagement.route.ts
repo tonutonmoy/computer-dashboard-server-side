@@ -6,6 +6,7 @@ import { SalesValidation } from "./salesManagement.validation";
 
 const router = express.Router();
 
+router.get("/", SalesControllers.getSales);
 router.post(
   "/create",
   validateRequest(SalesValidation.createSales),

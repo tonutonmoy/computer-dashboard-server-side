@@ -11,7 +11,18 @@ const createSales = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getSales = catchAsync(async (req, res) => {
+  const result = await CreateSalesServices.GetSalesDB();
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Sales crete successfully",
+    data: result,
+  });
+});
 
 export const SalesControllers = {
   createSales,
+  getSales,
 };

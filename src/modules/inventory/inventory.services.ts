@@ -60,7 +60,16 @@ const updateInventoryDB = async (id: string, payload: TInventory) => {
   return result;
 };
 
-const deleteInventoryDB = async () => {
+const deleteInventoryDB = async (payload: string[]) => {
+  const filter = { _id: { $in: payload } };
+  console.log(payload);
+  const result = await InventoryModel.deleteMany(filter);
+
+  if (result?.deletedCount > 0) {
+    const result2 = await InventoryModel.find();
+
+    return result2;
+  }
   return null;
 };
 

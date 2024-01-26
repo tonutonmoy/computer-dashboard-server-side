@@ -55,7 +55,8 @@ const updateInventory = catchAsync(async (req, res) => {
 });
 
 const deleteInventory = catchAsync(async (req, res) => {
-  const result = await InventoryServices.deleteInventoryDB();
+  const payload = req?.body;
+  const result = await InventoryServices.deleteInventoryDB(payload);
 
   res.send({
     statusCode: 201,
