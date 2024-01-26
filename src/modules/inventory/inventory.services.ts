@@ -35,7 +35,7 @@ const getInventoryDB = async (query: Record<string, unknown>) => {
   if (query?.condition) {
     query2["condition"] = {
       $regex: new RegExp(query?.condition as string, "i"),
-    }; // Case-sensitive regex
+    };
   }
   if (query?.capacity) {
     query2["capacity"] = { $regex: new RegExp(query?.capacity as string, "i") }; // Case-sensitive regex
