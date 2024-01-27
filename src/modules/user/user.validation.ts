@@ -1,0 +1,18 @@
+import { z } from "zod";
+
+const userRegisterValidation = z.object({
+  name: z.string(),
+  password: z.string(),
+  email: z.string(),
+  role: z.string(),
+});
+
+const userLoginValidation = z.object({
+  name: z.string(),
+  password: z.string(),
+});
+
+export const UserValidation = {
+  userRegisterValidation,
+  userLoginValidation,
+};
