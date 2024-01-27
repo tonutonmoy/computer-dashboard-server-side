@@ -22,9 +22,8 @@ const CreateSalesDB = async (payload: TSales) => {
     finalResult = await InventoryModel.find();
 
     const quantity = inventoryData?.quantity;
-    console.log(quantity);
+
     if ((quantity as number) < 1) {
-      console.log("dhukise");
       const result = await InventoryModel.deleteOne({
         _id: payload?.productId,
       });

@@ -7,8 +7,6 @@ const createInventoryDB = async (payload: TInventory) => {
 };
 
 const getInventoryDB = async (query: Record<string, unknown>) => {
-  console.log(query, "ki");
-
   const query2 = {} as any;
 
   if (Number(query?.price) > 0) {
@@ -44,13 +42,11 @@ const getInventoryDB = async (query: Record<string, unknown>) => {
     query2["color"] = { $regex: new RegExp(query?.color as string, "i") }; // Case-sensitive regex
   }
 
-  console.log(query2);
   const result = await InventoryModel.find(query2);
   return result;
 };
 
 const getSingleInventoryDB = async (id: string | undefined) => {
-  console.log(id, "singleID");
   const result = await InventoryModel.findOne({ _id: id });
   return result;
 };
@@ -62,7 +58,7 @@ const updateInventoryDB = async (id: string, payload: TInventory) => {
 
 const deleteInventoryDB = async (payload: string[]) => {
   const filter = { _id: { $in: payload } };
-  console.log(payload);
+
   const result = await InventoryModel.deleteMany(filter);
 
   if (result?.deletedCount > 0) {

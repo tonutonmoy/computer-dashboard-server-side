@@ -43,7 +43,6 @@ const updateInventory = catchAsync(async (req, res) => {
 
   delete payload?.id;
 
-  console.log(payload, id);
   const result = await InventoryServices.updateInventoryDB(id, payload);
 
   res.send({

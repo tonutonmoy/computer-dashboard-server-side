@@ -14,6 +14,7 @@ const registerUser = catchAsync(async (req, res) => {
 });
 
 const loginUser = catchAsync(async (req, res) => {
+  console.log(req.headers.authorization, "h");
   const result = await UserServices.loginUserToDB(req.body);
 
   res.send({

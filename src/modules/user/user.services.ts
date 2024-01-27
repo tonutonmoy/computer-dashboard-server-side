@@ -5,7 +5,6 @@ import bcrypt from "bcrypt";
 import { TUser } from "./user.interface";
 
 const registerUserToDB = async (data: TUser) => {
-  console.log(data);
   const res = await UserModel.create(data);
 
   if (!res) {
@@ -39,13 +38,13 @@ const registerUserToDB = async (data: TUser) => {
   return result;
 };
 const loginUserToDB = async (data: TUser) => {
-  const res = await UserModel.findOne({ _id: data?._id });
+  const res = await UserModel.findOne({ email: data?.email });
 
   if (!res) {
     throw {
       success: false,
       statusCode: 400,
-      message: "Use not exist!",
+      errorMessage: "User not exist!",
     };
   }
 
@@ -53,8 +52,8 @@ const loginUserToDB = async (data: TUser) => {
     throw {
       success: false,
       statusCode: 400,
-      message:
-        "User is exist but your password is wrong! please correct the password and try again!",
+      errorMessage:
+        " Your password is wrong! please correct the password and try again!",
     };
   }
 
@@ -78,6 +77,8 @@ const loginUserToDB = async (data: TUser) => {
     },
     token,
   };
+
+  console.log(token, "token ready");
 
   return result;
 };

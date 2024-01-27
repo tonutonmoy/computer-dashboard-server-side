@@ -8,7 +8,7 @@ const userRegisterValidation = z.object({
 });
 
 const userLoginValidation = z.object({
-  name: z.string(),
+  email: z.string(),
   password: z.string(),
 });
 
