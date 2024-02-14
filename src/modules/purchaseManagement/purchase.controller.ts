@@ -1,0 +1,28 @@
+import catchAsync from "../../app/config/utlis/catchAsync";
+import { PurchaseServices } from "./purchase.services";
+
+const createPurchase = catchAsync(async (req, res) => {
+  const result = await PurchaseServices.CreatePurchaseDB(req?.body);
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Purchase crete successfully",
+    data: result,
+  });
+});
+const getPurchase = catchAsync(async (req, res) => {
+  const result = await PurchaseServices.GetPurchaseDB();
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Purchase crete successfully",
+    data: result,
+  });
+});
+
+export const PurchaseControllers = {
+  createPurchase,
+  getPurchase,
+};

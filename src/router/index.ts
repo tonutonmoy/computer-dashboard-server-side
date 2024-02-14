@@ -3,6 +3,8 @@ import { InventoryRoutes } from "../modules/inventory/inventory.route";
 import { SalesRoutes } from "../modules/salesManagement/salesManagement.route";
 import { UserRoutes } from "../modules/user/user.route";
 import { CouponRoutes } from "../modules/couponManagement/coupon.route";
+import { PurchaseRoutes } from "../modules/purchaseManagement/purchase.route";
+import { ServiceRoutes } from "../modules/serviceManagement/service.route";
 
 const router = Router();
 
@@ -22,6 +24,14 @@ const moduleRoutes = [
   {
     path: "/coupon",
     route: CouponRoutes,
+  },
+  {
+    path: "/purchase",
+    route: PurchaseRoutes,
+  },
+  {
+    path: "/service",
+    route: ServiceRoutes,
   },
 ];
 

@@ -22,6 +22,17 @@ const getCoupon = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getSingleCoupon = catchAsync(async (req, res) => {
+  const code = req?.params?.code;
+  const result = await CouponServices.getSingleCouponDB(code);
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Coupon get successfully",
+    data: result,
+  });
+});
 
 const deleteCoupon = catchAsync(async (req, res) => {
   const _id = req?.params?.id;
@@ -39,4 +50,5 @@ export const CouponControllers = {
   createCoupon,
   getCoupon,
   deleteCoupon,
+  getSingleCoupon,
 };

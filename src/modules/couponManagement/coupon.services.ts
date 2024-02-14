@@ -10,6 +10,12 @@ const createCouponDB = async (payload: TCoupon) => {
 
 const getCouponDB = async () => {
   const result = await CouponModel.find();
+  console.log("aise");
+  return result;
+};
+const getSingleCouponDB = async (code: string) => {
+  const result = await CouponModel.findOne({ code });
+  console.log(result, "koi");
   return result;
 };
 
@@ -23,4 +29,5 @@ export const CouponServices = {
   getCouponDB,
 
   deleteCouponDB,
+  getSingleCouponDB,
 };

@@ -9,6 +9,7 @@ import { CouponValidation } from "./coupon.validation";
 const router = express.Router();
 
 router.get("/", auth(), CouponControllers.getCoupon);
+router.get("/single/:code", auth(), CouponControllers.getSingleCoupon);
 
 router.post(
   "/create",
