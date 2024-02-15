@@ -9,7 +9,7 @@ const CreateSalesDB = async (payload: TSales) => {
   if (!data) {
     return null;
   }
-  //
+
   const result = await InventoryModel.updateOne(
     { _id: payload?.productId },
     { $inc: { quantity: -payload?.quantity } }
