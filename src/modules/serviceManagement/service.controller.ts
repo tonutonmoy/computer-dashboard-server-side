@@ -2,6 +2,7 @@ import catchAsync from "../../app/config/utlis/catchAsync";
 import { ServiceServices } from "./service.services";
 
 const createService = catchAsync(async (req, res) => {
+  console.log(req.body);
   const result = await ServiceServices.CreateServiceDB(req?.body);
 
   res.send({
