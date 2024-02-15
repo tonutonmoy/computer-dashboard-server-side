@@ -21,8 +21,19 @@ const getPurchase = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getSinglePurchase = catchAsync(async (req, res) => {
+  const result = await PurchaseServices.GetSinglePurchaseDB(req?.params?.email);
+
+  res.send({
+    statusCode: 201,
+    success: true,
+    message: "Purchase crete successfully",
+    data: result,
+  });
+});
 
 export const PurchaseControllers = {
   createPurchase,
   getPurchase,
+  getSinglePurchase,
 };

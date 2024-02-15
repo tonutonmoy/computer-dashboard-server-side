@@ -11,8 +11,14 @@ const GetPurchaseDB = async () => {
   const result = await PurchaseModel.find();
   return result;
 };
+const GetSinglePurchaseDB = async (buyerEmail: string) => {
+  const result = await PurchaseModel.find({ buyerEmail });
+
+  return result;
+};
 
 export const PurchaseServices = {
   CreatePurchaseDB,
   GetPurchaseDB,
+  GetSinglePurchaseDB,
 };

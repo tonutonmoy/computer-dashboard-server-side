@@ -9,6 +9,7 @@ import { PurchaseControllers } from "./purchase.controller";
 const router = express.Router();
 
 router.get("/", auth(), PurchaseControllers.getPurchase);
+router.get("/:email", auth(), PurchaseControllers.getSinglePurchase);
 router.post(
   "/create",
   auth(),
