@@ -3,6 +3,7 @@ import { TSales } from "./salesManagement.interface";
 import SalesModel from "./salesManagement.model";
 
 const CreateSalesDB = async (payload: TSales) => {
+  console.log(payload);
   const data = await SalesModel.create(payload);
 
   let finalResult: any = [];

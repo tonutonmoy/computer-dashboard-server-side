@@ -6,18 +6,18 @@ import globalErrorHandler from "./app/errors/globalErrorHandler";
 const app: Application = express();
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "https://computer-management-dashboard.firebaseapp.com",
-//     credentials: true,
-//   })
-// );
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://computer-management-dashboard.firebaseapp.com",
     credentials: true,
   })
 );
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
 
 app.use("/api", router);
 

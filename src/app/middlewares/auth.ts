@@ -6,7 +6,8 @@ import config from "../config";
 import catchAsync from "../config/utlis/catchAsync";
 import UserModel from "../../modules/user/user.model";
 
-const auth = () => {
+type TRole = "seller" | "buyer";
+const auth = (...requiredRoles: TRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req?.headers?.authorization;
 
@@ -33,6 +34,18 @@ const auth = () => {
     }
 
     const { _id, email, username, role, iat } = decoded;
+
+    console.log(role, "role");
+    console.log(requiredRoles, "requiredRoles");
+    //  role checking
+    if (requiredRoles && !requiredRoles.includes(role)) {
+      console.log("role match korini");
+      throw {
+        success: false,
+        statusCode: 400,
+        errorMessage: "Unauthorized",
+      };
+    }
 
     // checking  the user is exist
     const user = await UserModel.isUserExistsByCustomId(_id);
