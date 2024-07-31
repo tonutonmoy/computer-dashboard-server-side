@@ -2,8 +2,12 @@ import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import router from "./router";
 import globalErrorHandler from "./app/errors/globalErrorHandler";
+import bodyParser from 'body-parser';
+import { router as paymentRouter } from "./modules/purchaseManagement/purchase.services"; 
 
 const app: Application = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(
@@ -20,6 +24,7 @@ app.use(
 // );
 
 app.use("/api", router);
+app.use("/payment", paymentRouter);
 
 app.use(globalErrorHandler);
 

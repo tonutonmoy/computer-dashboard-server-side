@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 import { TPurchase } from "./purchase.interface";
 
 const purchaseSchema = new Schema<TPurchase>({
+  productId: { type: String, required: true },
   name: { type: String, required: true },
   buyerName: { type: String, required: true },
   buyerEmail: { type: String, required: true },

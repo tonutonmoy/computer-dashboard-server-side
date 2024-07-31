@@ -2,12 +2,12 @@ import catchAsync from "../../app/config/utlis/catchAsync";
 import { PurchaseServices } from "./purchase.services";
 
 const createPurchase = catchAsync(async (req, res) => {
-  const result = await PurchaseServices.CreatePurchaseDB(req?.body);
+  const result = await PurchaseServices.CreatePurchaseDB(req.body);
 
   res.send({
     statusCode: 201,
     success: true,
-    message: "Purchase crete successfully",
+    message: "Purchase created successfully",
     data: result,
   });
 });

@@ -1,4 +1,5 @@
 export interface TPurchase {
+  productId: string;
   name: string;
   buyerName: string;
   buyerEmail: string;
