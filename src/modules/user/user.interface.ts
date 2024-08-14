@@ -5,6 +5,11 @@ export interface TUser {
   email: string;
   password: string;
   role: string;
+  image?: string;
+  country?: string;
+  city?: string;
+  number?: string;
+  bio?: string;
 }
 
 export interface UserModel extends Model<TUser> {

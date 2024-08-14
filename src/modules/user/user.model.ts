@@ -12,6 +12,11 @@ const userSchema = new Schema<TUser, UserModel>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, required: true },
+  image: { type: String, default:"not available" },
+  country: { type: String , default:"not available"},
+  city: { type: String, default:"not available" },
+  number: { type: String, default:"not available" },
+  bio: { type: String, default:"not available" },
 });
 
 userSchema.pre("save", async function (next) {

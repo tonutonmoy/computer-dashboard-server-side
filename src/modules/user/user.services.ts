@@ -83,7 +83,31 @@ const loginUserToDB = async (data: TUser) => {
   return result;
 };
 
+const getUserToDB = async (email:string) => {
+  const result = await UserModel.findOne({email});
+  return result;
+};
+const UpdateUserToDB = async (email: string, updateData: any) => {
+  try {
+    // Use the email to find the user and update with the provided data
+    const result = await UserModel.updateOne(
+      { email },          // Filter to find the document
+       updateData  // Update operation
+    );
+
+    console.log(updateData)
+    console.log(result)
+    // Return the result of the update operation
+    return result;
+  } catch (error) {
+    // Handle errors if necessary
+    console.error("Error updating user:", error);
+    throw error;
+  }
+};
 export const UserServices = {
   registerUserToDB,
   loginUserToDB,
+  getUserToDB,
+  UpdateUserToDB
 };

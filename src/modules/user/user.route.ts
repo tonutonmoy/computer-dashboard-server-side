@@ -4,7 +4,11 @@ import validateRequest from "../../app/middlewares/validateRequest";
 import { UserValidation } from "./user.validation";
 
 const router = express.Router();
+router.get(
+  "/",
 
+  USerControllers.getUser
+);
 router.post(
   "/registration",
   validateRequest(UserValidation.userRegisterValidation),
@@ -14,6 +18,12 @@ router.post(
   "/login",
   validateRequest(UserValidation.userLoginValidation),
   USerControllers.loginUser
+);
+
+router.put(
+  "/UpdateProfile",
+  
+  USerControllers.updateUser
 );
 
 export const UserRoutes = router;
