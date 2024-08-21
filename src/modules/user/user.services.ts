@@ -84,6 +84,7 @@ const loginUserToDB = async (data: TUser) => {
 };
 
 const getUserToDB = async (email:string) => {
+  console.log('ksksksks')
   const result = await UserModel.findOne({email});
   return result;
 };

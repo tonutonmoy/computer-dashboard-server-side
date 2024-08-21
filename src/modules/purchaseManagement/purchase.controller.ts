@@ -25,9 +25,9 @@ const getSinglePurchase = catchAsync(async (req, res) => {
   const result = await PurchaseServices.GetSinglePurchaseDB(req?.params?.email);
 
   res.send({
-    statusCode: 201,
+    statusCode: 200,
     success: true,
-    message: "Purchase crete successfully",
+    message: "Purchase get successfully",
     data: result,
   });
 });
